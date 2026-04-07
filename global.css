@@ -1,0 +1,20 @@
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/preflight.css" layer(base);
+@import "tailwindcss/utilities.css";
+
+@import "nativewind/theme";
+
+@layer components {
+  .tabs-icon {
+    @apply w-12 h-12 items-center justify-center;
+  }
+  .tabs-pill {
+    @apply w-12 h-12 items-center justify-center rounded-full bg-transparent;
+  }
+  .tabs-active {
+    @apply bg-blue-500;
+  }
+  .tabs-glyph {
+    @apply w-6 h-6;
+  }
+}
