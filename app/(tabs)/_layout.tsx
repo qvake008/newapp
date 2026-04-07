@@ -1,35 +1,22 @@
-import { Tabs } from 'expo-router';
-import React from 'react';
+// Nav tabs layout — created navigation tabs
+import { tabs } from '@/constants/data'
+import { Tabs } from 'expo-router'
 
-import { HapticTab } from '@/components/haptic-tab';
-import { IconSymbol } from '@/components/ui/icon-symbol';
-import { Colors } from '@/constants/theme';
-import { useColorScheme } from '@/hooks/use-color-scheme';
-
-export default function TabLayout() {
-  const colorScheme = useColorScheme();
-
+const TabLayout = () => {
   return (
-    <Tabs
-      screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        headerShown: false,
-        tabBarButton: HapticTab,
-      }}>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'Home',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="house.fill" color={color} />,
-        }}
-      />
-      <Tabs.Screen
-        name="explore"
-        options={{
-          title: 'Explore',
-          tabBarIcon: ({ color }) => <IconSymbol size={28} name="paperplane.fill" color={color} />,
-        }}
-      />
+    <Tabs screenOptions={{headerShown: false}}>
+        {tabs.map((tab) => (
+            <Tabs.Screen
+                key={tab.name}
+                name={tab.name}
+                options={{
+                    tabBarLabel: tab.title,
+                    tabBarIcon: () => tab.icon
+                }}
+            />
+        ))}
     </Tabs>
-  );
+  )
 }
+
+export default TabLayout
